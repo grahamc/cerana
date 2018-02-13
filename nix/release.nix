@@ -26,6 +26,7 @@ in rec {
   minimal_media = makeNetboot {
     system = "x86_64-linux";
     modules = import ./modules/module-list.nix ++ [
+      { nixpkgs = { overlays = [ (import ./overlay.nix) ]; }; }
       "${pkgs.path}/nixos/modules/profiles/minimal.nix"
       ./modules/cerana/cerana.nix
       ./modules/profiles/cerana-hardware.nix
